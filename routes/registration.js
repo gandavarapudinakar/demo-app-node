@@ -2,12 +2,16 @@ var express = require('express');
 var router = express.Router();
 var {user}=require('../models/')
 var sequelizer = require('sequelize');
-router.post('/',   function (req, res, next) {
-    user.create(req.body).then(user =>
-        res.json(user)
-    );
+router.post('/',  async function (req, res, next) {
+try {
 
 
+    const user1 = await user.create(req.body);
+    res.json({message: 'success',user:user1});
+
+}catch (e) {
+    res.json({message: 'email already exist'})
+}
 
 
 });
