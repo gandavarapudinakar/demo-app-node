@@ -3,14 +3,14 @@ var path = require('path');
 var Sequelize = require('sequelize');
 const db = {};
 
-const sequelize=new Sequelize(process.env.DB_NAME||'testDemo',process.env.DB_USER||'root',process.env.DB_PASS||'zessta',
+const sequelize=new Sequelize(process.env.DB_NAME||'testDemo',process.env.DB_USER||'root',process.env.DB_PASS||'root',
     {
         dialect: "mysql",
         host:"localhost"
     });
 fs.readdirSync(__dirname)
     .filter((file) =>
-        file != 'index.js')
+        file !=='index.js')
     .forEach((file) => {
         const model = sequelize.import(path.join(__dirname, file));
         db[model.name] = model;

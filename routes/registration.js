@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var {user}=require('../models/')
-var sequelizer = require('sequelize');
+var {user} = require('../models/');
 router.post('/',  async function (req, res, next) {
 try {
 
