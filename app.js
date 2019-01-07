@@ -7,6 +7,7 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var registrationRouter = require('./routes/registration');
+var userRouter= require('./routes/user');
 var {sequelize} = require('./models');
 
 var app = express();
@@ -26,9 +27,12 @@ sequelize.sync().then(()=>{
   console.log('connected to db');
 });
 app.use('/', indexRouter);
-//todo registration
+
+// registration route\
 app.use('/register', registrationRouter);
+
 app.use('/users', usersRouter);
+app.use('/user', userRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
