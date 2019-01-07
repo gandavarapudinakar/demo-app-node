@@ -10,7 +10,7 @@ const sequelize=new Sequelize(process.env.DB_NAME||'testDemo',process.env.DB_USE
     });
 fs.readdirSync(__dirname)
     .filter((file) =>
-        file != 'index.js')
+        file !=='index.js')
     .forEach((file) => {
         const model = sequelize.import(path.join(__dirname, file));
         db[model.name] = model;
